@@ -92,6 +92,14 @@ extern int8_t led_tick_step;
  *
  */
 static void check_start_application(void) {
+    PORT->Group[0].PINCFG[14].reg = PORT_PINCFG_PULLEN | PORT_PINCFG_INEN;
+    PORT->Group[0].OUTSET.reg = (1UL << 14);
+
+    if (!(PORT->Group[0].IN.reg & (1UL << 14))) {
+        return;
+    }
+
+
     uint32_t app_start_address;
 
     /* Load the Reset Handler address of the application */

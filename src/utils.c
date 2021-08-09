@@ -192,6 +192,11 @@ void RGBLED_set_color(uint32_t color) {
     write_apa_byte(color >> 8);
     write_apa_byte(color);
 
+    write_apa_byte(0b11100000);
+    write_apa_byte(0);
+    write_apa_byte(0);
+    write_apa_byte(0);
+
     write_apa_byte(0xFF);
     write_apa_byte(0xFF);
     write_apa_byte(0xFF);
